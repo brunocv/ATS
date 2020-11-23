@@ -1,6 +1,5 @@
 #!/bin/bash
-
-mkdir ../Proj_sonar
+./limpar.sh
 for (( counter=0; counter<99; counter++ ))
 do
 mkdir -p ../Proj_sonar/$counter/src/main/java
@@ -18,7 +17,7 @@ printf "Ficheiros java nos sítios corretos + pom.xml\n"
 
 for (( counter=0; counter<99; counter++ ))
 do
-find ../Proj_sonar/$counter -regex ".*\.java"  -exec grep -l  "public static void main\(.*\)" {} \;| cut -d "/" -f 7  | { read NAME ; sed -i "" 's/\<mainClass\>.*\<\/mainClass\>/\<mainClass\>'"$NAME"'<\/mainClass\>/g' ../Proj_sonar/$counter/pom.xml ;}
+find ../Proj_sonar/$counter -regex ".*\.java"  -exec grep -l  "public static void main\(.*\)" {} \;| cut -d "/" -f 7  | { read NAME ;sed -i "" 's/TESTE/'$NAME'/g' ../Proj_sonar/$counter/pom.xml ;}
 done
 printf "pom.xml pronto. \n"
 
