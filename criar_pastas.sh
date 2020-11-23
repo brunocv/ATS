@@ -3,10 +3,7 @@
 mkdir ../Proj_sonar
 for (( counter=0; counter<99; counter++ ))
 do
-mkdir ../Proj_sonar/$counter
-mkdir ../Proj_sonar/$counter/src
-mkdir ../Proj_sonar/$counter/src/main
-mkdir ../Proj_sonar/$counter/src/main/java
+mkdir -p ../Proj_sonar/$counter/src/main/java
 done 
 printf "Pastas criadas\n"
 
@@ -24,3 +21,4 @@ do
 
 done
 printf "pom.xml pronto e $teste \n"
+
