@@ -16,14 +16,12 @@ done
 printf "Ficheiros java nos sítios corretos + pom.xml\n"
 
 
-for (( counter=0,counter<99; counter++ ))
+for (( counter=0; counter<99; counter++ ))
 do
-$NAMECLASS=find ../Proj_sonar/$counter -regex ".*\.java"  -exec grep -l  "public static void main\(.*\)" {} \;| cut -d "/" -f 5    
-sed -i "" 's/\<mainClass\>.*\<\/mainClass\>/\<mainClass\>$NAMECLASS<\/mainClass\>/g' ../Proj_sonar/$counter/pom.xml
-
-
+NAME = $(find ../Proj_sonar/$counter/ -regex ".*\.java"  -exec grep -l  "public static void main\(.*\)" {} \;| cut -d "/" -f 7)
+sed -i "" 's/\<mainClass\>.*\<\/mainClass\>/\<mainClass\>'$name'<\/mainClass\>/g' ../Proj_sonar/$counter/pom.xml
 done
-printf "pom.xml pronto . \n"
+printf "pom.xml pronto. \n"
 
 
 
