@@ -16,9 +16,12 @@ done
 printf "Ficheiros java nos sítios corretos + pom.xml\n"
 
 
-for (( counter=0, teste=0; counter<99; counter++ ))
+for (( counter=0,counter<99; counter++ ))
 do
-
+find ../Proj_sonar/$counter -regex ".*\.java"  -exec grep -l  "public static void main\(.*\)" {} \;| cut -d "/" -f 5
 done
-printf "pom.xml pronto e $teste \n"
+printf "pom.xml pronto . \n"
+
+
+
 
