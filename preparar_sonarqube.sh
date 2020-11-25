@@ -5,14 +5,26 @@ if [ "$(uname)" == "Darwin" ]; then
 	#METE AQUI RAFA
 	printf "Mvn compile e mvn package feitos no Mac.\n"
 elif [ "$(uname)" == "Linux" ]; then
-	for (( counter=0; counter<5; counter++ ))
+	#23 segundos +/- que demora a correr 1 mvn compile+mvn package
+	ativo=0
+	for (( counter=0; counter<99; counter++ ))
 	do
-	if [ $counter != 38 ] && [ $counter != 42 ] && [ $counter != 62 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
-		gnome-terminal -- bash -c "cd ../Proj_sonar/$counter; mvn compile; mvn package; exit; exec bash"
-	fi
+		if [ $counter != 38 ] && [ $counter != 42 ] && [ $counter != 62 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
+			#Este é o oficial
+			#gnome-terminal -- bash -c "cd ../Proj_sonar/$counter; mvn compile; mvn package; exit; exec bash"
+			#Este é o de teste
+			gnome-terminal -- bash -c "cd ../Proj_sonar/$counter; mvn compile; mvn package; exec bash"
+			((ativo++))
+			printf "$counter \n"
+		fi
+		if [ $ativo -gt 2 ]; then
+			sleep 25
+			ativo=0
+		fi
 	done
 	printf "Mvn compile e mvn package feitos no Linux.\n"
 fi
+
 
 sleep 20
 #Executar o SONARQUBE

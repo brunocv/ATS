@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 for (( counter=0; counter<99; counter++ ))
@@ -7,11 +6,12 @@ mkdir -p ../Proj_sonar/$counter/src/main/java
 done 
 printf "Pastas criadas\n"
 
-
 for (( counter=0; counter<99; counter++ ))
 do
 cp pom.xml ../Proj_sonar/$counter
-find ../projectsPOO_1920/$counter -type f -name "*.java" -exec cp -n {} ../Proj_sonar/$counter/src/main/java \;
+#VERSÃO ANTERIOR
+#find ../projectsPOO_1920/$counter -type f -name "*.java" -exec cp -n {} ../Proj_sonar/$counter/src/main/java \;
+cp -a ../projectsPOO_1920/$counter/. ../Proj_sonar/$counter/src/main/java
 done
 printf "Ficheiros java nos sítios corretos + pom.xml\n"
 
