@@ -7,7 +7,7 @@ if [ "$(uname)" == "Darwin" ]; then
 elif [ "$(uname)" == "Linux" ]; then
 	#23 segundos +/- que demora a correr 1 mvn compile+mvn package
 	ativo=0
-	for (( counter=0; counter<99; counter++ ))
+	for (( counter=20; counter<30; counter++ ))
 	do
 		if [ $counter != 38 ] && [ $counter != 42 ] && [ $counter != 62 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
 			#Este é o oficial
@@ -17,7 +17,7 @@ elif [ "$(uname)" == "Linux" ]; then
 			((ativo++))
 			printf "$counter \n"
 		fi
-		if [ $ativo -gt 2 ]; then
+		if [ $ativo -gt 3 ]; then
 			sleep 25
 			ativo=0
 		fi
