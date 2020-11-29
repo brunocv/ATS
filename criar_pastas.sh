@@ -17,7 +17,7 @@ done
 printf "Ficheiros java nos sítios corretos + pom.xml\n"
 
 
-#Encontrar a main dos projetos e alterar a pom com tal, por causa do sed é diferente para o MAC e LINUX
+#Encontrar a main dos projetos e alterar a pom com a main, por causa do sed é diferente para o MAC e LINUX
 if [ "$(uname)" == "Darwin" ]; then
 	for (( counter=0; counter<99; counter++ ))
 	do
