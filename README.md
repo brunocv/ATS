@@ -11,18 +11,17 @@
 </ol>
 
 <ol> 
-	<li> <b>Projetos sem ficheiros</b></li> 
-<ul>
+ <li> <b>Projetos sem ficheiros</b> </li> 
+	<ul>
 		<li>38</li>
 		<li>42</li>
 		<li>62</li>
 		<li>75</li>
 		<li>80</li>
-</ul>
+	</ul>
 	
-	<li> <b>Projetos que não funcionam ainda</b></li>
-<ul>
-
+<li> <b>Projetos que não funcionam ainda</b></li>
+	<ul>
 		<li>9</li>
 		<li>11</li>
 		<li>17</li>
@@ -41,5 +40,5 @@
 		<li>94</li>
 		<li>96</li>
 		<li>98</li>
-</ul>
+	</ul>
 </ol> 
