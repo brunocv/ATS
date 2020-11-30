@@ -7,7 +7,6 @@ mkdir -p ../Proj_sonar/$counter/src/main/java
 done 
 printf "Pastas criadas\n"
 
-
 #Copiar trabalhos para as pastas criadas anteriormente e copiar a pom também 
 for (( counter=0; counter<99; counter++ ))
 do
@@ -15,6 +14,14 @@ cp pom.xml ../Proj_sonar/$counter
 cp -a ../projectsPOO_1920/$counter/. ../Proj_sonar/$counter/src/main/java
 done
 printf "Ficheiros java nos sítios corretos + pom.xml\n"
+
+#Resolução de erros para o mvn compila/package não falhar
+#Projeto 26
+cp ../projectsPOO_1920/26/Grupo31_POO2020/Usuаrio.java ../Proj_sonar/26/src/main/java/Grupo31_POO2020/Usuário.java
+rm ../Proj_sonar/26/src/main/java/Grupo31_POO2020/Usuаrio.java 
+#Projeto 96
+cp ../projectsPOO_1920/96/Grupo242_POO2020/projeto/Projeto/OperaЗao.java ../Proj_sonar/96/src/main/java/Grupo242_POO2020/projeto/Projeto/Operaçao.java
+rm ../Proj_sonar/96/src/main/java/Grupo242_POO2020/projeto/Projeto/OperaЗao.java
 
 
 #Encontrar a main dos projetos e alterar a pom com a main, por causa do sed é diferente para o MAC e LINUX
@@ -74,6 +81,6 @@ printf "pom.xml pronto.\n"
 for (( counter=0; counter<99; counter++ ))
 do
 printf "$counter   "
-awk 'NR==42' ../Proj_sonar/$counter/pom.xml
+awk 'NR==53' ../Proj_sonar/$counter/pom.xml
 done
 

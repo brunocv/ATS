@@ -25,11 +25,8 @@
 		<li>9</li>
 		<li>11</li>
 		<li>17</li>
-		<li>26</li>
-		<li>31</li>
 		<li>32</li>
 		<li>35</li>
-		<li>36</li>
 		<li>46</li>
 		<li>47</li>
 		<li>60</li>
@@ -38,7 +35,6 @@
 		<li>73</li>
 		<li>92</li>
 		<li>94</li>
-		<li>96</li>
 		<li>98</li>
 	</ul>
 </ol> 
