@@ -25,7 +25,6 @@
 		<li>17</li>
 		<li>32</li>
 		<li>35</li>
-		<li>47</li>
 		<li>60</li>
 		<li>66</li>
 		<li>72</li>
