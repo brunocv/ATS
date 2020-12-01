@@ -1,8 +1,23 @@
 #!/bin/bash
+#mudar  as preferencias do terminal;
+#Preferences->Perfil->Shell-> When the shell exits -> change to "Close the window" if it was closed properly
 
 #Mvn compile e mvn package
 if [ "$(uname)" == "Darwin" ]; then
-	#METE AQUI RAFA
+	ativo=0
+	for (( counter=0; counter<99; counter++ ))
+	do
+		if [ $counter != 38 ] && [ $counter != 42 ] && [ $counter != 62 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
+			DIR=$(pwd)
+			osascript -e 'tell application "Terminal" to do script  "cd '${DIR}/../Proj_sonar/${counter}'; mvn compile; mvn package; exit"'
+			((ativo++))
+			printf "$counter \n"
+		fi
+		if [ $ativo -gt 2 ]; then
+			sleep 25
+			ativo=0
+		fi
+	done
 	printf "Mvn compile e mvn package feitos no Mac.\n"
 elif [ "$(uname)" == "Linux" ]; then
 	#23 segundos +/- que demora a correr 1 mvn compile+mvn package
@@ -26,13 +41,16 @@ elif [ "$(uname)" == "Linux" ]; then
 fi
 
 
-sleep 20
+#sleep 20
 #Executar o SONARQUBE
+# multi_Line Comment
+: '
 if [ "$(uname)" == "Darwin" ]; then
-    	#METE AQUI RAFA
-	
+	osascript -e 'tell application "Terminal" to do script "/opt/sonarqube-8.5.0.37579/bin/macosx-universal-64/sonar.sh console;exit"'
 	printf "A executar sonarqube no Mac.\n"
 elif [ "$(uname)" == "Linux" ]; then
     	gnome-terminal -- bash -c "cd; ./opt/sonarqube-8.5.0.37579/bin/linux-x86-64/sonar.sh console; exit; exec bash"
 	printf "A executar sonarqube no Linux.\n"
 fi
+'
+
