@@ -81,6 +81,6 @@ printf "pom.xml pronto.\n"
 for (( counter=0; counter<99; counter++ ))
 do
 printf "$counter   "
-awk 'NR==53' ../Proj_sonar/$counter/pom.xml
+awk 'NR==67' ../Proj_sonar/$counter/pom.xml
 done
 

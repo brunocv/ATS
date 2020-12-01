@@ -22,8 +22,6 @@
 	
 <li> <b>Projetos que não funcionam ainda</b></li>
 	<ul>
-		<li>9</li>
-		<li>11</li>
 		<li>17</li>
 		<li>32</li>
 		<li>35</li>
