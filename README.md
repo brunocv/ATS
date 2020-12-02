@@ -22,13 +22,10 @@
 	
 <li> <b>Projetos que não funcionam ainda</b></li>
 	<ul>
-		<li>17</li>
 		<li>32</li>
 		<li>35</li>
 		<li>60</li>
-		<li>66</li>
 		<li>72</li>
-		<li>73</li>
 		<li>92</li>
 		<li>94</li>
 		<li>98</li>
