@@ -5,15 +5,17 @@
 #Mvn compile e mvn package
 if [ "$(uname)" == "Darwin" ]; then
 	ativo=0
-	for (( counter=0; counter<99; counter++ ))
+	# proj 35 -> chama funções que nao existem
+	for (( counter=0; counter<99 ; counter++ ))
 	do
-		if [ $counter != 38 ] && [ $counter != 42 ] && [ $counter != 62 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
+		if [ $counter != 35 ] && [ $counter != 38 ] && [ $counter != 42 ] && [ $counter != 62 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
 			DIR=$(pwd)
 			osascript -e 'tell application "Terminal" to do script  "cd '${DIR}/../Proj_sonar/${counter}'; mvn compile; mvn package; exit"'
+			#osascript -e 'tell application "Terminal" to do script  "cd '${DIR}/../Proj_sonar/${counter}'; mvn verify;"'
 			((ativo++))
 			printf "$counter \n"
 		fi
-		if [ $ativo -gt 2 ]; then
+		if [ $ativo -gt 1 ]; then
 			sleep 25
 			ativo=0
 		fi
@@ -24,7 +26,7 @@ elif [ "$(uname)" == "Linux" ]; then
 	ativo=0
 	for (( counter=0; counter<99; counter++ ))
 	do
-		if [ $counter != 38 ] && [ $counter != 42 ] && [ $counter != 62 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
+		if [ $counter != 35 ] && [ $counter != 38 ] && [ $counter != 42 ] && [ $counter != 62 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
 			#Este é o oficial
 			gnome-terminal -- bash -c "cd ../Proj_sonar/$counter; mvn compile; mvn package; exit; exec bash"
 			#Este é o de teste
