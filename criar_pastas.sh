@@ -19,11 +19,18 @@ printf "Ficheiros java nos sítios corretos + pom.xml\n"
 #Projeto 26
 cp ../projectsPOO_1920/26/Grupo31_POO2020/Usuаrio.java ../Proj_sonar/26/src/main/java/Grupo31_POO2020/Usuário.java
 rm ../Proj_sonar/26/src/main/java/Grupo31_POO2020/Usuаrio.java 
+
 #Projeto 96
 cp ../projectsPOO_1920/96/Grupo242_POO2020/projeto/Projeto/OperaЗao.java ../Proj_sonar/96/src/main/java/Grupo242_POO2020/projeto/Projeto/Operaçao.java
 rm ../Proj_sonar/96/src/main/java/Grupo242_POO2020/projeto/Projeto/OperaЗao.java
+
 #Projeto 60->falta este import
-sed -i "" '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
+if [ "$(uname)" == "Darwin" ]; then
+	sed -i "" '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
+
+elif [ "$(uname)" == "Linux" ];then
+	sed -i '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
+fi
 
 #Encontrar a main dos projetos e alterar a pom com a main, por causa do sed é diferente para o MAC e LINUX
 if [ "$(uname)" == "Darwin" ]; then
@@ -82,6 +89,6 @@ printf "pom.xml pronto.\n"
 for (( counter=0; counter<99; counter++ ))
 do
 printf "$counter   "
-awk 'NR==82' ../Proj_sonar/$counter/pom.xml
+awk 'NR==78' ../Proj_sonar/$counter/pom.xml
 done
 

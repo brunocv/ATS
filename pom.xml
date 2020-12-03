@@ -8,8 +8,8 @@
     <packaging>jar</packaging>
     <version>0.1.0</version>
 
-    <properties>
-        <maven.compiler.source>14</maven.compiler.source>
+    <properties> 
+	<maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
     </properties>
 
@@ -75,22 +75,22 @@
                             <transformers>
                                 <transformer
                                     implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>Interface.java</mainClass>
+                                    <mainClass>TESTE</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-          <!--   <plugin>
+            <!--<plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.0</version>
             <configuration>
                 <release>14</release>  
             </configuration>
-        </plugin> -->
-
+        </plugin>
+	-->
         </plugins>
 
     </build>

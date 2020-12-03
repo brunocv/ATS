@@ -43,10 +43,9 @@ elif [ "$(uname)" == "Linux" ]; then
 fi
 
 
-#sleep 20
+sleep 20
 #Executar o SONARQUBE
-# multi_Line Comment
-: '
+
 if [ "$(uname)" == "Darwin" ]; then
 	osascript -e 'tell application "Terminal" to do script "/opt/sonarqube-8.5.0.37579/bin/macosx-universal-64/sonar.sh console;exit"'
 	printf "A executar sonarqube no Mac.\n"
@@ -54,5 +53,5 @@ elif [ "$(uname)" == "Linux" ]; then
     	gnome-terminal -- bash -c "cd; ./opt/sonarqube-8.5.0.37579/bin/linux-x86-64/sonar.sh console; exit; exec bash"
 	printf "A executar sonarqube no Linux.\n"
 fi
-'
+
 
