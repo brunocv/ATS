@@ -23,17 +23,69 @@ rm ../Proj_sonar/26/src/main/java/Grupo31_POO2020/Usuаrio.java
 #Projeto 96
 cp ../projectsPOO_1920/96/Grupo242_POO2020/projeto/Projeto/OperaЗao.java ../Proj_sonar/96/src/main/java/Grupo242_POO2020/projeto/Projeto/Operaçao.java
 rm ../Proj_sonar/96/src/main/java/Grupo242_POO2020/projeto/Projeto/OperaЗao.java
+#projeto 35
+resolve_projeto35_mac()
+{
+	find ../Proj_sonar/35/ -regex ".*\.java" -exec sed -i '' -e "1s/^/package Grupo9_POO2020.POO_20.trazaqui; /" {} \;
+	rm ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/__SHELL9.java
+#sed -i "" '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
+#remove 
+	sed -i "" 's/.*setEncParaEntrega.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAquiApp.java
+	sed -i "" 's/.*setEncParaEntrega.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+	sed -i "" 's/.*setDisponivel.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+	sed -i "" 's/.*setEMedicas.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+#remove os parametros 
+	sed -i "" 's/j1.gravar(file_name)/j1.gravar()/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+	sed -i "" 's/TrazAqui.initApp(file_name)/TrazAqui.initApp()/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+	sed -i "" 's/TrazAqui.initApp(file_name)/TrazAqui.initApp()/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAquiApp.java
+	sed -i "" 's/trazaqui.gravar(file_name)/trazaqui.gravar()/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAquiApp.java
+#Adiciona uma função ao fim do ficheiro
+	sed -i "" '182s/.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAqui.java	
+	printf "\tpublic boolean addEncomenda(Encomenda a){\n \t\t if(! this.encomendas.containsKey(a.getIdEncomenda()) ) {\n \t\t\t this.encomendas.put(a.getIdEncomenda(), a);\n \t\t\t return true;\n \t\t }\n \t\t return false; \n \t } \n}"  >> ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAqui.java
+#substitui uma função que não foi implementada por um print.
+	sed -i "" 's/case 1: requisitaEntrega(); break;/case 1: System.out.println("Não foi implementado!");/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAquiApp.java
+#adiciona um metodo set 
+	sed -i "" '84s/^/    public void setRaio(double r){ this.raio =r;}/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Transportador.java
+}
+resolve_projeto35_linux()
+{
+	find ../Proj_sonar/35/ -regex ".*\.java" -exec sed -i  -e "1s/^/package Grupo9_POO2020.POO_20.trazaqui; /" {} \;
+	rm ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/__SHELL9.java
+#sed -i "" '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
+#remove 
+	sed -i 's/.*setEncParaEntrega.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAquiApp.java
+	sed -i 's/.*setEncParaEntrega.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+	sed -i 's/.*setDisponivel.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+	sed -i 's/.*setEMedicas.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+#remove os parametros 
+	sed -i 's/j1.gravar(file_name)/j1.gravar()/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+	sed -i 's/TrazAqui.initApp(file_name)/TrazAqui.initApp()/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Main.java
+	sed -i 's/TrazAqui.initApp(file_name)/TrazAqui.initApp()/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAquiApp.java
+	sed -i 's/trazaqui.gravar(file_name)/trazaqui.gravar()/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAquiApp.java
+#Adiciona uma função ao fim do ficheiro
+	sed -i '182s/.*//g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAqui.java	
+	printf "\tpublic boolean addEncomenda(Encomenda a){\n \t\t if(! this.encomendas.containsKey(a.getIdEncomenda()) ) {\n \t\t\t this.encomendas.put(a.getIdEncomenda(), a);\n \t\t\t return true;\n \t\t }\n \t\t return false; \n \t } \n}"  >> ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAqui.java
+#substitui uma função que não foi implementada por um print.
+	sed -i 's/case 1: requisitaEntrega(); break;/case 1: System.out.println("Não foi implementado!");/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/TrazAquiApp.java
+#adiciona um metodo set 
+	sed -i '84s/^/    public void setRaio(double r){ this.raio =r;}/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Transportador.java
+}
+
 
 #Projeto 60->falta este import;Projeto 42->falta de main
 if [ "$(uname)" == "Darwin" ]; then
 	sed -i "" '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
 	sed -i "" 's/void menu()/void main(String[] args)/' ../Proj_sonar/42/src/main/java/Grupo11_POO2020/Trabalho-POO/TrazAqui.java
-
+	resolve_projeto35_mac
 elif [ "$(uname)" == "Linux" ];then
 	sed -i '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
 	sed -i 's/void menu()/void main(String[] args)/' ../Proj_sonar/42/src/main/java/Grupo11_POO2020/Trabalho-POO/TrazAqui.java
+	resolve_projeto35_linux
 fi
 
+
+   
+ 
 #Encontrar a main dos projetos e alterar a pom com a main, por causa do sed é diferente para o MAC e LINUX
 if [ "$(uname)" == "Darwin" ]; then
 	for (( counter=0; counter<99; counter++ ))
