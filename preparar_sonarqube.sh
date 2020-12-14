@@ -27,7 +27,7 @@ fi
 sleep 50
 
 #token para adicionar projetos ao sonar
-token =$(curl -X POST  -u admin:admin 'http://localhost:9000/api/user_tokens/generate?name=ATS' | sed  's/^.*"token":"\([^"]*\)".*$/\1/' ) 
+token=$(curl -X POST  -u admin:admin 'http://localhost:9000/api/user_tokens/generate?name=ATS' | sed  's/^.*"token":"\([^"]*\)".*$/\1/' ) 
 #contador para controlo de projetos em execução
 ativo=0 
 if [ "$(uname)" == "Darwin" ]; then
@@ -39,7 +39,7 @@ if [ "$(uname)" == "Darwin" ]; then
 			((ativo++))
 			printf "$counter \n"
 		fi
-		if [ $ativo -gt 3 ]; then
+		if [ $ativo -gt 2 ]; then
 			sleep 70
 			ativo=0
 		fi
@@ -55,7 +55,7 @@ elif [ "$(uname)" == "Linux" ]; then
 			((ativo++))
 			printf "$counter \n"
 		fi
-		if [ $ativo -gt 3 ]; then
+		if [ $ativo -gt 2 ]; then
 			sleep 70
 			ativo=0
 		fi
