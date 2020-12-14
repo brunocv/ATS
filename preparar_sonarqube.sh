@@ -37,6 +37,7 @@ curl -X POST  -u admin:admin 'http://localhost:9000/api/user_tokens/revoke?name=
 token=$(curl -X POST  -u admin:admin 'http://localhost:9000/api/user_tokens/generate?name=ATS' | sed  's/^.*"token":"\([^"]*\)".*$/\1/' ) 
 
 printf "Inicio da execução de projetos no sonarqube\n"
+
 #contador para controlo de projetos em execução
 ativo=0 
 if [ "$(uname)" == "Darwin" ]; then
