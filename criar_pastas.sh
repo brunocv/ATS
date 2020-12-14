@@ -1,5 +1,7 @@
 #!/bin/bash
-
+source ./progress_bar.sh 
+#resize da janela do terminal.
+printf '\e[8;40;130t'
 #Criar pastas vazias
 for (( counter=0; counter<99; counter++ ))
 do
@@ -10,10 +12,11 @@ printf "Pastas criadas\n"
 #Copiar trabalhos para as pastas criadas anteriormente e copiar a pom também 
 for (( counter=0; counter<99; counter++ ))
 do
+prog "$((counter + 2))" 
 cp pom.xml ../Proj_sonar/$counter
 cp -a ../projectsPOO_1920/$counter/. ../Proj_sonar/$counter/src/main/java
 done
-printf "Ficheiros java nos sítios corretos + pom.xml\n"
+printf "\nFicheiros java e pom.xml nos sítios corretos\n"
 
 #Resolução de erros para o mvn compile/package não falhar
 #Projeto 26
@@ -72,18 +75,24 @@ resolve_projeto35_linux()
 }
 
 
-#Projeto 60->falta este import;Projeto 42->falta de main
+#Projeto 60->falta este import;Projeto 42->falta de main;Proj 27->carateres chineses
 if [ "$(uname)" == "Darwin" ]; then
 	sed -i "" '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
 	sed -i "" 's/void menu()/void main(String[] args)/' ../Proj_sonar/42/src/main/java/Grupo11_POO2020/Trabalho-POO/TrazAqui.java
+	sed -i "" '5s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompProdutos.java
+	sed -i "" '4s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompEmpresas.java
+	sed -i "" '4s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompClientes.java
 	resolve_projeto35_mac
 elif [ "$(uname)" == "Linux" ];then
 	sed -i '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
 	sed -i 's/void menu()/void main(String[] args)/' ../Proj_sonar/42/src/main/java/Grupo11_POO2020/Trabalho-POO/TrazAqui.java
+	sed -i '5s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompProdutos.java
+	sed -i '4s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompEmpresas.java
+	sed -i '4s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompClientes.java
 	resolve_projeto35_linux
 fi
 
-
+	
    
  
 #Encontrar a main dos projetos e alterar a pom com a main, por causa do sed é diferente para o MAC e LINUX
@@ -92,7 +101,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	do
 	
 		if [ $counter != 1 ] && [ $counter != 11 ] && [ $counter != 33 ] && [ $counter != 35 ] && [ $counter != 38 ] && [ $counter != 41 ]  && [ $counter != 52 ] && [ $counter != 61 ] && [ $counter != 62 ] && [ $counter != 68 ] && [ $counter != 73 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
-	
+			prog "$((counter + 2))" 
 			find ../Proj_sonar/$counter -regex ".*\.java"  -exec grep -l  "public[ static]* void main[ ]*[(].*[)]" {} \;| 
 			sed 's|.*/||' | { read NAME ;sed -i "" 's/TESTE/'$NAME'/g' ../Proj_sonar/$counter/pom.xml ;}
 		fi
@@ -102,7 +111,7 @@ elif [ "$(uname)" == "Linux" ];then
 	do
 	
 		if [ $counter != 1 ] && [ $counter != 11 ] && [ $counter != 33 ] && [ $counter != 35 ] && [ $counter != 38 ] && [ $counter != 41 ]  && [ $counter != 52 ] && [ $counter != 61 ] && [ $counter != 62 ] && [ $counter != 68 ] && [ $counter != 73 ] && [ $counter != 75 ] && [ $counter != 80 ]; then
-	
+			prog "$((counter + 2))" 
 			find ../Proj_sonar/$counter -regex ".*\.java"  -exec grep -l  "public[ static]* void main[ ]*[(].*[)]" {} \;| 
 			sed 's|.*/||' | { read NAME ;sed -i 's/TESTE/'$NAME'/g' ../Proj_sonar/$counter/pom.xml ;}
 		fi
@@ -136,7 +145,7 @@ elif [ "$(uname)" == "Linux" ]; then
 	sed -i 's/TESTE/TrazAquiApp.java/g' ../Proj_sonar/68/pom.xml
 	sed -i 's/TESTE/TestePrograma.java/g' ../Proj_sonar/73/pom.xml
 fi
-printf "pom.xml pronto.\n"
+printf "\n\t\t pom.xml pronto.\n"
 
 
 #Imprimir todas as mains postas nas poms
