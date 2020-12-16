@@ -14,7 +14,7 @@ read num_proj
 
 if ! [[ $num_proj =~ $re ]] ; then #verifica se é um numero.
    	echo "error:Escreva um número entre [1..99]" >&2; exit 1
-elif (( num_proj > 0 )) && (( num_proj < 99 )); then 
+elif (( num_proj > 0 )) && (( num_proj <= 99 )); then 
 	echo "Ira ser executado $num_proj projeto(s)!"
 else
     echo "Entre 1 e 99!"; exit 1
