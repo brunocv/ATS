@@ -1,2 +1,4 @@
 #exclude POO projects
 .DS_Store
+.ipynb_checkpoints/AnaliseCSV-checkpoint.ipynb
+.ipynb_checkpoints/AEC_T2-checkpoint.ipynb
