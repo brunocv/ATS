@@ -20,8 +20,6 @@
 		<li>80</li>
 	</ul>
 	
-<li> <b>Projetos que não funcionam ainda</b></li>
-	<ul>
-		<li>35</li>
-	</ul>
+<li> <b>Projetos 23 e 83 para tarefa 3, mais debt e code smells</b></li>
+
 </ol> 
