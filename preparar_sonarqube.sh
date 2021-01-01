@@ -29,7 +29,7 @@ elif [ "$(uname)" == "Linux" ]; then
 	printf "A executar o server do sonarqube.\n"
 fi
 #espera que o sonarqube execute.
-sleep 50
+sleep 70
 
 #elimina o token criado na ultima execução .
 curl -X POST  -u admin:admin 'http://localhost:9000/api/user_tokens/revoke?name=ATS'
@@ -66,7 +66,7 @@ elif [ "$(uname)" == "Linux" ]; then
 			printf "$counter \n"
 		fi
 		if [ $ativo -gt 2 ]; then
-			sleep 70
+			sleep 75
 			ativo=0
 		fi
 	done
