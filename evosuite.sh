@@ -18,7 +18,8 @@ if [ -f "$FILE" ]; then
 else 
     echo "Check: evosuite-1.1.0.jar nao existe."
     echo "Fazendo download de evosuite-1.1.0.jar..."
-    wget --no-check-certificate --content-disposition -O ../EvoSuite/evosuite-1.1.0.jar https://github.com/EvoSuite/evosuite/releases/download/v1.1.0/evosuite-1.1.0.jar
+    curl -L -o ../EvoSuite/evosuite-1.1.0.jar https://github.com/EvoSuite/evosuite/releases/download/v1.1.0/evosuite-1.1.0.jar
+    #wget --no-check-certificate --content-disposition -O ../EvoSuite/evosuite-1.1.0.jar https://github.com/EvoSuite/evosuite/releases/download/v1.1.0/evosuite-1.1.0.jar
 fi
 
 FILE="../EvoSuite/evosuite-standalone-runtime-1.1.0.jar"
@@ -27,7 +28,9 @@ if [ -f "$FILE" ]; then
 else 
     echo "Check: evosuite-standalone-runtime-1.1.0.jar nao existe."
     echo "Fazendo download de evosuite-standalone-runtime-1.1.0.jar..."
-    wget --no-check-certificate --content-disposition -O ../EvoSuite/evosuite-standalone-runtime-1.1.0.jar https://github.com/EvoSuite/evosuite/releases/download/v1.1.0/evosuite-standalone-runtime-1.1.0.jar
+
+    curl -L -o ../EvoSuite/evosuite-standalone-runtime-1.1.0.jar https://github.com/EvoSuite/evosuite/releases/download/v1.1.0/evosuite-standalone-runtime-1.1.0.jar
+    #wget --no-check-certificate --content-disposition -O ../EvoSuite/evosuite-standalone-runtime-1.1.0.jar https://github.com/EvoSuite/evosuite/releases/download/v1.1.0/evosuite-standalone-runtime-1.1.0.jar
 fi
 
 
@@ -57,8 +60,8 @@ else
 fi
 
 #Mover ficheiros que quero trabalhar
-cp -a ../Proj_sonar/23/ ../Tarefa_3/
-cp -a ../Proj_sonar/83/ ../Tarefa_3/
+cp -a ../Proj_sonar/23 ../Tarefa_3/
+cp -a ../Proj_sonar/83 ../Tarefa_3/
 printf "ficheiros copiados para  trabalhar.\n\n"
 
 #EvoSuite requer java files compilados antes de executar
@@ -77,7 +80,23 @@ re='^[0-9]+$'
 read report
 
 if [ "$(uname)" == "Darwin" ]; then
-	printf "nada\n"
+	DIR=$(pwd)
+    if ! [[ $report =~ $re ]] ; then #verifica se é um numero.
+            echo "error:Escreva 1 ou 2" >&2; exit 1
+    elif (( report == 1 )); then
+            echo "HTML escolhido"
+        pri
+        osascript -e 'tell application "Terminal" to do script "cd '${DIR}/../Tarefa_3/23'; java -jar ../../EvoSuite/evosuite-1.1.0.jar -target src/main/java/ProjetoPOO/ -Dstatistics_backend=HTML -Dplot=true -Dcoverage_matrix=true -Dsearch_budget=40;"'
+        osascript -e 'tell application "Terminal" to do script "cd '${DIR}/../Tarefa_3/83'; java -jar ../../EvoSuite/evosuite-1.1.0.jar -target src/main/java/Trabalho/src -Dstatistics_backend=HTML -Dplot=true -Dcoverage_matrix=true -Dsearch_budget=40;"'
+
+    elif (( report == 2 )); then
+        echo "CSV escolhido"
+        printf "Caso queira saber como correr os testes, encontra-se um pdf chamado 'EvoSuite_run_tests' na pasta do projeto\n\n"
+        osascript -e 'tell application "Terminal" to do script  "cd '${DIR}/../Tarefa_3/23'; java -jar ../../EvoSuite/evosuite-1.1.0.jar -target src/main/java/ProjetoPOO/ -Dstatistics_backend=CSV -Dplot=true -Dcoverage_matrix=true -Dsearch_budget=40;"'
+        osascript -e 'tell application "Terminal" to do script  "cd '${DIR}/../Tarefa_3/83'; java -jar ../../EvoSuite/evosuite-1.1.0.jar -target src/main/java/Trabalho/src -Dstatistics_backend=CSV -Dplot=true -Dcoverage_matrix=true -Dsearch_budget=40;"'
+    else
+            echo "Entre 1 e 2!"; exit 1
+    fi
 elif [ "$(uname)" == "Linux" ]; then
 	if ! [[ $report =~ $re ]] ; then #verifica se é um numero.
         	echo "error:Escreva 1 ou 2" >&2; exit 1
