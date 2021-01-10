@@ -21,17 +21,16 @@ fi
 
 tarefa0(){
 	printf "Executar tarefa 0!!!\n\n"
-	#bash limpar.sh
+	bash limpar.sh
 	printf "Tudo limpo\n"
 }
 
 
 tarefa1(){
 	printf "Executar tarefa 1!!!\n\n"
-	#bash criar_pastas.sh
-	#bash preparar_sonarqube.sh
-	#bash criar_csv.sh
-	printf "Execucao em comentario para nao substituir enquanto em desenvolvimento de outras tarefas\n"
+	bash criar_pastas.sh
+	bash preparar_sonarqube.sh
+	bash criar_csv.sh
 }
 
 tarefa2(){
