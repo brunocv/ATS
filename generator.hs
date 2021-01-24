@@ -69,7 +69,7 @@ print_ne (Encomenda a b c d l) = "Encomenda:" ++ a ++ "," ++ b ++ "," ++ c ++ ",
 
 --gerar identificador
 genIdentificador :: Gen Identificador
-genIdentificador = do a <- choose(1 :: Int ,1000 :: Int)
+genIdentificador = do a <- choose(1 :: Int ,100000 :: Int)
                       return ("u"++show(a))
 
 --gerar Nomes
@@ -98,7 +98,7 @@ genUtilizador = do a <- genIdentificador
 
 --gerar identificador voluntario
 genIdentificadorV :: Gen Identificador
-genIdentificadorV = do a <- choose(1 :: Int ,1000 :: Int)
+genIdentificadorV = do a <- choose(1 :: Int ,100000 :: Int)
                        return ("v"++show(a))
 
 
@@ -117,12 +117,12 @@ genVoluntario = do a <- genIdentificadorV
 
 --gerar identificador transportadora
 genIdentificadorT :: Gen Identificador
-genIdentificadorT = do a <- choose(1 :: Int ,1000 :: Int)
+genIdentificadorT = do a <- choose(1 :: Int ,100000 :: Int)
                        return ("t"++show(a))
 
 --gerar identificador loja
 genIdentificadorL :: Gen Identificador
-genIdentificadorL = do a <- choose(1 :: Int ,1000 :: Int)
+genIdentificadorL = do a <- choose(1 :: Int ,100000 :: Int)
                        return ("l"++show(a))
 
 
@@ -156,12 +156,12 @@ genLoja = do a <- genIdentificadorL
 
 --gerar identificador encomenda
 genIdentificadorE :: Gen Identificador
-genIdentificadorE = do a <- choose(1 :: Int ,1000 :: Int)
+genIdentificadorE = do a <- choose(1 :: Int ,100000 :: Int)
                        return ("e"++show(a))
 
 --gerar peso
 genPeso :: Gen Peso
-genPeso = choose(0.1 :: Float,100.0 :: Float)
+genPeso = choose(0.1 :: Float,500.0 :: Float)
 
 --gerar lista de compras
 genLista :: Gen Lista
