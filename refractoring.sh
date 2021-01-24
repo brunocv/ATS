@@ -2,9 +2,10 @@
 source ./progress_bar.sh 
 #resize da janela do terminal.
 printf '\e[8;40;130t'
-
-
-FILES=$(grep -rl 'System.out.print.*' /Users/ril/Desktop/ATS/project/Proj_sonar |  awk '/.*\.java/{ print $0 }')
+ 
+DIR=$(pwd)
+ 
+FILES=$(grep -rl 'System.out.print.*' ${DIR}/../Proj_sonar/ |  awk '/.*\.java/{ print $0 }')
 #x=$(grep -R -l 'System.out.print.*' /Users/ril/Desktop/ATS/project/Proj_sonar) ;while read line; do echo "LINE: '${line}'"; done < <(echo "$x")
 re1='Proj_sonar/68/'
 re2='Proj_sonar/0/'
@@ -14,7 +15,7 @@ re5='Proj_sonar/22/'
 re6='Proj_sonar/85/'
 re7='Proj_sonar/47/'
 re0='\n'
-
+ 
 contador=1;
 resolve_prints_mac()
 {
@@ -32,8 +33,8 @@ resolve_prints_mac()
 	done
 	echo "\nFIM\n";
 }
-
-
+ 
+ 
 resolve_prints_linux()
 {
 	echo "$FILES" | while read line ; 
@@ -50,10 +51,9 @@ resolve_prints_linux()
 	done
 	echo "\nFIM\n";
 }
-
+ 
 if [ "$(uname)" == "Darwin" ]; then
 resolve_prints_mac
-fi
 elif [ "$(uname)" == "Linux" ]; then
 resolve_prints_linux
 fi
