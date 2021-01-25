@@ -35,6 +35,7 @@ tarefa1(){
 
 tarefa2(){
 	printf "Executar tarefa 2!!!\n\n"
+	bash refractoring.sh
 }
 
 tarefa3(){
@@ -44,7 +45,7 @@ tarefa3(){
 }
 
 tarefa4(){
-	printf "Executar tarefa 4!!!\n\n"
+	printf "Esta tarefa terá de ser executada num pc com Intel !!!\n\n"
 }
 
 if [ $num_tarefa == 0 ]; then
