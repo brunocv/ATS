@@ -25,7 +25,7 @@ resolve_prints_mac()
 			prog "$(((( ${contador} * 100)) / 383))" 
 			n=$(grep -n  "public class.*" ${line} | sed 's/:.*//');
 			n2=$(( ${n} + 2 )) 
-			find ${line} -exec sed -i '' -e "${n2}s/^/Logger logger = Logger.getLogger(this.getClass().getName()); /" {} \;			
+			find ${line} -exec sed -i '' -e "${n2}s/^/private transient Logger logger = Logger.getLogger(this.getClass().getName()); /" {} \;			
 			LC_CTYPE=C sed -i "" 's/System.out.println(/logger.log(Level.WARNING,/g' ${line} 
 			LC_CTYPE=C sed -i "" 's/System.out.print(/logger.log(Level.WARNING,/g' ${line}
 			((contador++))
