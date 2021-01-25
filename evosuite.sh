@@ -91,7 +91,6 @@ if [ "$(uname)" == "Darwin" ]; then
 
     elif (( report == 2 )); then
         echo "CSV escolhido"
-        printf "Caso queira saber como correr os testes, encontra-se um pdf chamado 'EvoSuite_run_tests' na pasta do projeto\n\n"
         osascript -e 'tell application "Terminal" to do script  "cd '${DIR}/../Tarefa_3/23'; java -jar ../../EvoSuite/evosuite-1.1.0.jar -target src/main/java/ProjetoPOO/ -Dstatistics_backend=CSV -Dplot=true -Dcoverage_matrix=true -Dsearch_budget=40;"'
         osascript -e 'tell application "Terminal" to do script  "cd '${DIR}/../Tarefa_3/83'; java -jar ../../EvoSuite/evosuite-1.1.0.jar -target src/main/java/Trabalho/src -Dstatistics_backend=CSV -Dplot=true -Dcoverage_matrix=true -Dsearch_budget=40;"'
     else
@@ -108,7 +107,6 @@ elif [ "$(uname)" == "Linux" ]; then
 
 	elif (( report == 2 )); then
 		echo "CSV escolhido"
-		printf "Caso queira saber como correr os testes, encontra-se um pdf chamado 'EvoSuite_run_tests' na pasta do projeto\n\n"
 		gnome-terminal -- bash -c "cd ../Tarefa_3/23; java -jar ../../EvoSuite/evosuite-1.1.0.jar -target src/main/java/ProjetoPOO/ -Dstatistics_backend=CSV -Dplot=true -Dcoverage_matrix=true -Dsearch_budget=40; exec bash"
                 gnome-terminal -- bash -c "cd ../Tarefa_3/83; java -jar ../../EvoSuite/evosuite-1.1.0.jar -target src/main/java/Trabalho/src -Dstatistics_backend=CSV -Dplot=true -Dcoverage_matrix=true -Dsearch_budget=40; exec bash"
 	else
@@ -116,3 +114,4 @@ elif [ "$(uname)" == "Linux" ]; then
 	fi
 fi
 
+printf "Caso queira saber como correr os testes, encontra-se um pdf chamado 'EvoSuite_run_tests' na pasta do projeto\n\n"
