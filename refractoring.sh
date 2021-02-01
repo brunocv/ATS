@@ -15,7 +15,8 @@ re5='Proj_sonar/22/'
 re6='Proj_sonar/85/'
 re7='Proj_sonar/47/'
 re0='\n'
- 
+
+
 contador=1;
 resolve_prints_mac()
 {
@@ -25,32 +26,40 @@ resolve_prints_mac()
 			prog "$(((( ${contador} * 100)) / 383))" 
 			n=$(grep -n  "public class.*" ${line} | sed 's/:.*//');
 			n2=$(( ${n} + 2 )) 
-			find ${line} -exec sed -i '' -e "${n2}s/^/private transient Logger logger = Logger.getLogger(this.getClass().getName()); /" {} \;			
+            ext=".class.getName()"
+            name_class=$(echo ${line} | rev | cut -d"/" -f1  | rev | cut -d"." -f1)
+            final=$name_class$ext
+            find ${line} -exec sed -i '' -e "1s/^/import java.util.logging.Level;import java.util.logging.Logger; /" {} \;
+            find ${line} -exec sed -i '' -e "${n2}s/^/private transient static Logger logger = Logger.getLogger(${final}); /" {} \;		
 			LC_CTYPE=C sed -i "" 's/System.out.println(/logger.log(Level.WARNING,/g' ${line} 
 			LC_CTYPE=C sed -i "" 's/System.out.print(/logger.log(Level.WARNING,/g' ${line}
 			((contador++))
 		fi
 	done
-	echo "\nFIM\n";
+	printf "\nFIM\n";
 }
- 
  
 resolve_prints_linux()
 {
-	echo "$FILES" | while read line ; 
-	do
-		if [[ $line != *${re1}* ]] &&  [[ $line != *${re2}* ]] &&[[ $line != *${re3}* ]] &&[[ $line != *${re4}* ]]&&[[ $line != *${re5}* ]] &&[[ $line != *${re6}* ]] &&[[ $line != *${re7}* ]]; then
-			prog "$(((( ${contador} * 100)) / 383))" 
-			n=$(grep -n  "public class.*" ${line} | sed 's/:.*//');
-			n2=$(( ${n} + 2 )) 
-			find ${line} -exec sed -i  -e "${n2}s/^/Logger logger = Logger.getLogger(this.getClass().getName()); /" {} \;			
-			LC_CTYPE=C sed -i  's/System.out.println(/logger.log(Level.WARNING,/g' ${line} 
-			LC_CTYPE=C sed -i  's/System.out.print(/logger.log(Level.WARNING,/g' ${line}
-			((contador++))
-		fi
-	done
-	echo "\nFIM\n";
+        echo "$FILES" | while read line ; 
+        do
+                if [[ $line != *${re1}* ]] &&  [[ $line != *${re2}* ]] &&[[ $line != *${re3}* ]] &&[[ $line != *${re4}* ]]&&[[ $line != *${re5}* ]] &&[[ $line != *${re6}* ]] &&[[ $line != *${re7}* ]]; then
+                        prog "$(((( ${contador} * 100)) / 383))"
+                        n=$(grep -n  "public class.*" ${line} | sed 's/:.*//');
+                        n2=$(( ${n} + 2 ))
+                        ext=".class.getName()"
+                        name_class=$(echo ${line} | rev | cut -d"/" -f1  | rev | cut -d"." -f1)
+                        final=$name_class$ext
+                        find ${line} -exec sed -i  -e "1s/^/import java.util.logging.Level;import java.util.logging.Logger; /" {} \;
+                        find ${line} -exec sed -i  -e "${n2}s/^/private transient static Logger logger = Logger.getLogger(${final}); /" {} \;
+                        LC_CTYPE=C sed -i  's/System.out.println(/logger.log(Level.WARNING,/g' ${line}
+                        LC_CTYPE=C sed -i  's/System.out.print(/logger.log(Level.WARNING,/g' ${line}
+                        ((contador++))
+                fi
+        done
+        printf "\nFIM\n";
 }
+
  
 if [ "$(uname)" == "Darwin" ]; then
 resolve_prints_mac

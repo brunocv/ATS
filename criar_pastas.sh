@@ -73,8 +73,28 @@ resolve_projeto35_linux()
 #adiciona um metodo set 
 	sed -i '84s/^/    public void setRaio(double r){ this.raio =r;}/g' ../Proj_sonar/35/src/main/java/Grupo9_POO2020/POO_20/trazaqui/Transportador.java
 }
+resolve_23_83_mac()
+{
 
+	sed -i "" '241s/.*//g' ../Proj_sonar/23/src/main/java/ProjetoPOO/mPrincipal.java
+	sed -i "" '407s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+	sed -i "" '568s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+	sed -i "" '673s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+	sed -i "" '842s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+	sed -i "" '1159s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
 
+}
+resolve_23_83_linux()
+{
+
+	sed -i  '241s/.*//g' ../Proj_sonar/23/src/main/java/ProjetoPOO/mPrincipal.java
+	sed -i  '407s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+	sed -i  '568s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+	sed -i  '673s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+	sed -i  '842s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+	sed -i  '1159s/.*//g' ../Proj_sonar/83/src/main/java/Trabalho/src/TrazAquiController.java
+
+}
 #Projeto 60->falta este import;Projeto 42->falta de main;Proj 27->carateres chineses
 if [ "$(uname)" == "Darwin" ]; then
 	sed -i "" '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
@@ -83,6 +103,7 @@ if [ "$(uname)" == "Darwin" ]; then
 	sed -i "" '4s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompEmpresas.java
 	sed -i "" '4s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompClientes.java
 	resolve_projeto35_mac
+	resolve_23_83_mac
 elif [ "$(uname)" == "Linux" ];then
 	sed -i '2s/^/import view.InterfaceGeral;/' ../Proj_sonar/60/src/main/java/TrazAqui/controller/Parse.java
 	sed -i 's/void menu()/void main(String[] args)/' ../Proj_sonar/42/src/main/java/Grupo11_POO2020/Trabalho-POO/TrazAqui.java
@@ -90,6 +111,7 @@ elif [ "$(uname)" == "Linux" ];then
 	sed -i '4s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompEmpresas.java
 	sed -i '4s/^.*//' ../Proj_sonar/27/src/main/java/Grupo10_POO2020/CompClientes.java
 	resolve_projeto35_linux
+	resolve_23_83_linux
 fi
 
 	
