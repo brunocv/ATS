@@ -3,18 +3,18 @@
 #Preferences->Perfil->Shell-> When the shell exits -> change to "Close the window" if it was closed properly
 
 #------------------------
-source ./progress_bar.sh 
+source ./progress_bar.sh
 #resize da janela do terminal.
 printf '\e[8;40;130t'
 
 #--------------
 re='^[0-9]+$'
 printf "Insira o numero de projetos a executa(1 a 99)- "
-read num_proj 
+read num_proj
 
 if ! [[ $num_proj =~ $re ]] ; then #verifica se é um numero.
    	echo "error:Escreva um número entre [1..99]" >&2; exit 1
-elif (( num_proj > 0 )) && (( num_proj <= 99 )); then 
+elif (( num_proj > 0 )) && (( num_proj <= 99 )); then
 	echo "Ira ser executado $num_proj projeto(s)!"
 else
     echo "Entre 1 e 99!"; exit 1
@@ -34,12 +34,12 @@ sleep 70
 #elimina o token criado na ultima execução .
 curl -X POST  -u admin:admin 'http://localhost:9000/api/user_tokens/revoke?name=ATS'
 #token para adicionar projetos ao sonar
-token=$(curl -X POST  -u admin:admin 'http://localhost:9000/api/user_tokens/generate?name=ATS' | sed  's/^.*"token":"\([^"]*\)".*$/\1/' ) 
+token=$(curl -X POST  -u admin:admin 'http://localhost:9000/api/user_tokens/generate?name=ATS' | sed  's/^.*"token":"\([^"]*\)".*$/\1/' )
 
 printf "Inicio da execução de projetos no sonarqube\n"
 
 #contador para controlo de projetos em execução
-ativo=0 
+ativo=0
 if [ "$(uname)" == "Darwin" ]; then
 	for (( counter=0; counter<num_proj ; counter++ ))
 	do
@@ -50,7 +50,7 @@ if [ "$(uname)" == "Darwin" ]; then
 			printf "$counter \n"
 		fi
 		if [ $ativo -gt 2 ]; then
-			sleep 70
+			sleep 70 #8-120
 			ativo=0
 		fi
 	done
@@ -75,7 +75,7 @@ fi
 
 
 
-sleep 80
+sleep 120
 
 
 

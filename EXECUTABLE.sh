@@ -1,11 +1,11 @@
 #!/bin/bash
 
 printf "Insira o numero da tarefa a executar(0 a 4)- \n"
-printf "0 - Limpar tudo feito\n"
+printf "0 - Limpar tudo o que foi feito\n"
 printf "1 - Criar projetos + preparar sonarqube + descobrir as metrics dos projetos + criar CSV com informacao\n"
 printf "2 - Auto Refactor\n"
 printf "3 - Criacao de testes automaticos (Requisito: tarefa 1)\n"
-printf "4 - nem ideia\n"
+printf "4 - Calcular a Energia\n"
 
 re='^[0-9]+$'
 read num_tarefa
@@ -45,7 +45,7 @@ tarefa3(){
 }
 
 tarefa4(){
-	printf "Esta tarefa terá de ser executada num pc com Intel !!!\n\n"
+	printf "Esta tarefa terá de ser executada num pc com Intel e não pode ser Mac!!!\n\n"
 }
 
 if [ $num_tarefa == 0 ]; then
